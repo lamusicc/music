@@ -1,0 +1,12 @@
+--- makesnortsam.sh	2008-01-11 18:43:01.000000000 +0100
++++ makesnortsam.sh.new	2008-01-11 18:48:48.000000000 +0100
+@@ -11,7 +11,8 @@
+ #        Under Solaris, the OPSEC stuff is linked dynamically.
+ #        On other platforms, statically.
+ 
+-source ${ROOT}sbin/functions.sh
++[ -f /sbin/functions.sh ] && source ${ROOT}sbin/functions.sh || source ${ROOT}lib/rc/sh/functions.sh
++
+ systype=`uname`
+ 
+ case "$1" in

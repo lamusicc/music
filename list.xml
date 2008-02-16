@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<layman>
+
+  <overlay
+      type = "git"
+      src  = "git://lamusic.dyndns.info/layman/music.git"
+      contact = "lamusic.gentoo@orange.fr"
+      status  = "unofficial"
+      name = "music">
+
+    <link>
+      http://lamusic.dyndns.info/
+    </link>
+
+    <description>
+      music overlay
+    </description>
+  </overlay>
+</layman>
+
