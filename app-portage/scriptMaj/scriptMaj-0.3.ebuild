@@ -9,7 +9,7 @@ inherit eutils
 DESCRIPTION="A script to upgrade your gentoo system support for baselayout 1 & 2"
 HOMEPAGE="http://lamusic.dyndns.info/"
 SRC_URI="http://lamusic.dyndns.info/ebuild/archive/${P}.tar.gz
-http://xenu.lamusic.dyndns.info/ebuild/archive/${P}.tar.gz"
+http://server.lamusic.dyndns.info/ebuild/archive/${P}.tar.gz"
 
 
 LICENSE="GPL-2"
