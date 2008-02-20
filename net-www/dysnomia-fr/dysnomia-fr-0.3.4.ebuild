@@ -22,7 +22,7 @@ RDEPEND="${DEPEND}"
 
 src_unpack(){
 
-	unpack ${A}.tgz
+	unpack ${A}
 
 }
 

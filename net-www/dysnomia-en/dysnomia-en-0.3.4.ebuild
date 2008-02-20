@@ -23,19 +23,16 @@ RDEPEND="${DEPEND}"
 src_unpack(){
 
 	unpack ${A}
-
 }
 
 src_compile() {
 	cd ${S}
 	make || die "einstall failed"
-
 }
 
 src_install(){
 
 	dodir /usr/bin
 	dobin dysnomia
-
 }
 
