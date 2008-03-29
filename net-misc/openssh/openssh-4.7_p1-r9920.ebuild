@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/openssh-4.7_p1-r4.ebuild,v 1.1 2008/02/09 20:21:49 vapier Exp $
+# $Header: $
 
 inherit eutils flag-o-matic ccc multilib autotools pam
 
@@ -21,7 +21,7 @@ SRC_URI="mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="static pam tcpd kerberos skey selinux chroot X509 ldap smartcard hpn libedit X VersionChange"
 
 RDEPEND="pam? ( virtual/pam )
@@ -40,6 +40,8 @@ DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	virtual/os-headers
 	sys-devel/autoconf"
+RDEPEND="${RDEPEND}
+	pam? ( >=sys-auth/pambase-20080219.1 )"
 PROVIDE="virtual/ssh"
 
 S=${WORKDIR}/${PARCH}
@@ -70,7 +72,7 @@ src_unpack() {
 		-e '/_PATH_XAUTH/s:/usr/X11R6/bin/xauth:/usr/bin/xauth:' \
 		pathnames.h || die
 
-	use X509 && epatch "${DISTDIR}"/${X509_PATCH} "${FILESDIR}"/${PN}-4.4_p1-x509-hpn-glue.patch
+	use X509 && epatch "${DISTDIR}"/${X509_PATCH} "${FILESDIR}"/${PN}-4.7_p1-x509-hpn-glue.patch
 	use chroot && epatch "${FILESDIR}"/openssh-4.3_p1-chroot.patch
 	use smartcard && epatch "${FILESDIR}"/openssh-3.9_p1-opensc.patch
 	use VersionChange && epatch "${FILESDIR}"/openssh-4.7_p1-version.patch
@@ -133,10 +135,19 @@ src_install() {
 	newconfd "${FILESDIR}"/sshd.confd sshd
 	keepdir /var/empty
 
-	newpamd "${FILESDIR}"/sshd.pam_include.1 sshd
-	use pam \
-		&& dosed "/^#UsePAM /s:.*:UsePAM yes:" /etc/ssh/sshd_config \
-		&& dosed "/^#PasswordAuthentication /s:.*:PasswordAuthentication no:" /etc/ssh/sshd_config
+	newpamd "${FILESDIR}"/sshd.pam_include.2 sshd
+	if use pam; then
+		# Whenever enabling the pam USE flag, enable PAM support on
+		# the configuration file. Also disable password authentication
+		# and printing of motd and last login. The latter is done to
+		# leave those tasks up to PAM itself, through pambase.
+		sed -i \
+			-e "/^#UsePAM /s:.*:UsePAM yes:" \
+			-e "/^#PasswordAuthentication /s:.*:PasswordAuthentication no:" \
+			-e "/^#PrintLastLog /s:.*:PrintLastLog no:" \
+			-e "/^#PrintMotd /s:.*:PrintMotd no:" \
+			"${D}"/etc/ssh/sshd_config
+	fi
 
 	doman contrib/ssh-copy-id.1
 	dodoc ChangeLog CREDITS OVERVIEW README* TODO sshd_config
