@@ -16,20 +16,17 @@ IUSE=""
 
 DEPEND=""
 
-RDEPEND=""
+RDEPEND="${DEPEND}"
 
 src_unpack(){
-
 	unpack ${A}
 }
 
 src_compile(){
-
-	make  || die "einstall failed"
+	emake  || die "einstall failed"
 }
 
 src_install() {
-
 	dobin pdfcrack
 }
 

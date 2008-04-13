@@ -16,6 +16,7 @@ KEYWORDS="~x86 ~amd64 ~ppc ~x86-fbsd"
 IUSE=""
 
 DEPEND="app-portage/merge"
+
 RDEPEND="${DEPEND}"
 
 src_install() {

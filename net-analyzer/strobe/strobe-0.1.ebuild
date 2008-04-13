@@ -9,15 +9,16 @@ RESTRICT="mirror"
 DESCRIPTION="A tiny scanner for tcp socket 1995"
 HOMEPAGE="http://lamusic.dyndns.info/"
 SRC_URI="http://lamusic.dyndns.info/ebuild/archive/${P}.tar.gz
-http://server.lamusic.dyndns.info/ebuild/archive/${P}.tar.gz"
+		 http://server.lamusic.dyndns.info/ebuild/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~ppc ~x86-fbsd"
 IUSE=""
 
-RDEPEND=""
 DEPEND=""
+
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/strobe"
 

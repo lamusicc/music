@@ -16,9 +16,10 @@ KEYWORDS="~x86 ~amd64 ~ppc ~x86-fbsd"
 IUSE=""
 
 DEPEND=""
+
 RDEPEND="${DEPEND}"
 
 src_install() {
-	dobin merge || die
+		dobin merge || die
 }
 

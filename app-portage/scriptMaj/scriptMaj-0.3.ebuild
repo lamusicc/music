@@ -18,7 +18,9 @@ KEYWORDS="~x86 ~amd64 ~ppc ~x86-fbsd"
 IUSE=""
 
 
-DEPEND="app-portage/layman app-portage/eix"
+DEPEND="app-portage/layman
+		app-portage/eix"
+
 RDEPEND="${DEPEND}"
 
 

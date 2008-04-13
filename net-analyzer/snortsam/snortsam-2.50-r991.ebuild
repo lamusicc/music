@@ -8,12 +8,16 @@ MY_P="${PN}-src-${PV}"
 DESCRIPTION="Snort plugin that allows automated blocking of IP addresses on several firewalls with baselayout 2 support"
 HOMEPAGE="http://www.snortsam.net/"
 SRC_URI="http://www.snortsam.net/files/snortsam/${MY_P}.tar.gz
-mirror://gentoo/${PN}-2.50-ciscoacl.diff.bz2"
+		 mirror://gentoo/${PN}-2.50-ciscoacl.diff.bz2"
 
 LICENSE="as-is"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 IUSE=""
+
+DEPEND=""
+
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}"
 

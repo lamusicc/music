@@ -17,6 +17,7 @@ KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DEPEND="app-portage/layman"
+
 RDEPEND="${DEPEND}"
 
 src_install() {

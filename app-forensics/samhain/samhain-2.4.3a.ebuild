@@ -13,12 +13,14 @@ IUSE="crypt debug doc login-watch mounts-check mysql netclient netserver postgre
 RESTRICT="nostrip"
 
 DEPEND="crypt? ( >=app-crypt/gnupg-1.2 )
-mysql? ( virtual/mysql )
-postgres? ( >=dev-db/postgresql-7.2 )
-prelude? ( >=dev-libs/libprelude-0.8.10 )
->=sys-apps/sed-4
-app-arch/tar
-app-arch/gzip"
+		mysql? ( virtual/mysql )
+		postgres? ( >=dev-db/postgresql-7.2 )
+		prelude? ( >=dev-libs/libprelude-0.8.10 )
+		>=sys-apps/sed-4
+		app-arch/tar
+		app-arch/gzip"
+
+RDEPEND="${DEPEND}"
 
 # Samhain stealth mode options
 #

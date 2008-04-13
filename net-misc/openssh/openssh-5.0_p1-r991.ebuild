@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/openssh-5.0_p1-r1.ebuild,v 1.1 2008/04/10 03:51:32 vapier Exp $
 
 inherit eutils flag-o-matic ccc multilib autotools pam
 
@@ -8,21 +8,22 @@ inherit eutils flag-o-matic ccc multilib autotools pam
 # and _p? releases.
 PARCH=${P/_/}
 
-X509_PATCH="${PARCH}+x509-6.1.diff.gz"
-LDAP_PATCH="${PARCH/openssh-4.7/openssh-lpk-4.6}-0.3.9.patch"
-HPN_PATCH="${PARCH}-hpn13v1.diff.gz"
+X509_PATCH="${PARCH}+x509-6.1.1.diff.gz"
+#LDAP_PATCH="${PARCH/openssh-4.9/openssh-lpk-4.6}-0.3.9.patch"
+HPN_PATCH="${PARCH}-hpn13v3.diff.gz"
 
 DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="http://www.openssh.org/"
 SRC_URI="mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
-	ldap? ( http://dev.inversepath.com/openssh-lpk/${LDAP_PATCH} )
-	X509? ( http://roumenpetrov.info/openssh/x509-6.1/${X509_PATCH} )
-	hpn? ( http://www.psc.edu/networking/projects/hpn-ssh/${HPN_PATCH} )"
+	http://www.sxw.org.uk/computing/patches/openssh-5.0p1-gsskex-20080404.patch
+	${LDAP_PATCH:+ldap? ( http://dev.inversepath.com/openssh-lpk/${LDAP_PATCH} )}
+	${X509_PATCH:+X509? ( http://roumenpetrov.info/openssh/x509-6.1.1/${X509_PATCH} )}
+	${HPN_PATCH:+hpn? ( http://www.psc.edu/networking/projects/hpn-ssh/${HPN_PATCH} )}"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="static pam tcpd kerberos skey selinux chroot X509 ldap smartcard hpn libedit X VersionChange"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
+IUSE="static pam tcpd kerberos skey selinux X509 ldap smartcard hpn libedit X coffee"
 
 RDEPEND="pam? ( virtual/pam )
 	kerberos? ( virtual/krb5 )
@@ -40,8 +41,6 @@ DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	virtual/os-headers
 	sys-devel/autoconf"
-RDEPEND="${RDEPEND}
-	pam? ( >=sys-auth/pambase-20080219.1 )"
 PROVIDE="virtual/ssh"
 
 S=${WORKDIR}/${PARCH}
@@ -72,19 +71,21 @@ src_unpack() {
 		-e '/_PATH_XAUTH/s:/usr/X11R6/bin/xauth:/usr/bin/xauth:' \
 		pathnames.h || die
 
-	use X509 && epatch "${DISTDIR}"/${X509_PATCH} "${FILESDIR}"/${PN}-4.7_p1-x509-hpn-glue.patch
-	use chroot && epatch "${FILESDIR}"/openssh-4.3_p1-chroot.patch
+	use X509 && epatch "${DISTDIR}"/${X509_PATCH} "${FILESDIR}"/${PN}-4.9_p1-x509-hpn-glue.patch
 	use smartcard && epatch "${FILESDIR}"/openssh-3.9_p1-opensc.patch
-	use VersionChange && epatch "${FILESDIR}"/openssh-4.7_p1-version.patch
+	use coffee && epatch "${FILESDIR}"/openssh-5.0-coffee.patch
 	if ! use X509 ; then
 		if [[ -n ${LDAP_PATCH} ]] && use ldap ; then
 			epatch "${DISTDIR}"/${LDAP_PATCH} "${FILESDIR}"/${PN}-4.4_p1-ldap-hpn-glue.patch
+			epatch "${FILESDIR}"/${P}-lpk-64bit.patch #210110
 		fi
-	elif use ldap ; then
-		ewarn "Sorry, X509 and ldap don't get along, disabling ldap"
+		epatch "${DISTDIR}"/openssh-5.0p1-gsskex-20080404.patch #115553 #216932
+	else
+		use ldap && ewarn "Sorry, X509 and ldap don't get along, disabling ldap"
+		epatch "${FILESDIR}"/${PN}-4.7_p1-GSSAPI-dns.patch #165444 integrated into gsskex
 	fi
 	[[ -n ${HPN_PATCH} ]] && use hpn && epatch "${DISTDIR}"/${HPN_PATCH}
-	epatch "${FILESDIR}"/${P}-GSSAPI-dns.patch #165444
+	epatch "${FILESDIR}"/${PN}-4.7p1-selinux.diff #191665
 
 	sed -i "s:-lcrypto:$(pkg-config --libs openssl):" configure{,.ac} || die
 
@@ -135,19 +136,10 @@ src_install() {
 	newconfd "${FILESDIR}"/sshd.confd sshd
 	keepdir /var/empty
 
-	newpamd "${FILESDIR}"/sshd.pam_include.2 sshd
-	if use pam; then
-		# Whenever enabling the pam USE flag, enable PAM support on
-		# the configuration file. Also disable password authentication
-		# and printing of motd and last login. The latter is done to
-		# leave those tasks up to PAM itself, through pambase.
-		sed -i \
-			-e "/^#UsePAM /s:.*:UsePAM yes:" \
-			-e "/^#PasswordAuthentication /s:.*:PasswordAuthentication no:" \
-			-e "/^#PrintLastLog /s:.*:PrintLastLog no:" \
-			-e "/^#PrintMotd /s:.*:PrintMotd no:" \
-			"${D}"/etc/ssh/sshd_config
-	fi
+	newpamd "${FILESDIR}"/sshd.pam_include.1 sshd
+	use pam \
+		&& dosed "/^#UsePAM /s:.*:UsePAM yes:" /etc/ssh/sshd_config \
+		&& dosed "/^#PasswordAuthentication /s:.*:PasswordAuthentication no:" /etc/ssh/sshd_config
 
 	doman contrib/ssh-copy-id.1
 	dodoc ChangeLog CREDITS OVERVIEW README* TODO sshd_config
