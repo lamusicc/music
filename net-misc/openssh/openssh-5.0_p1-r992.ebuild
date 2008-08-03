@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/openssh-5.0_p1-r1.ebuild,v 1.1 2008/04/10 03:51:32 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/openssh-5.0_p1-r2.ebuild,v 1.1 2008/07/23 15:03:20 flameeyes Exp $
 
 inherit eutils flag-o-matic ccc multilib autotools pam
 
@@ -28,7 +28,7 @@ IUSE="static pam tcpd kerberos skey selinux X509 ldap smartcard hpn libedit X co
 RDEPEND="pam? ( virtual/pam )
 	kerberos? ( virtual/krb5 )
 	selinux? ( >=sys-libs/libselinux-1.28 )
-	skey? ( >=app-admin/skey-1.1.5-r1 )
+	skey? ( >=sys-auth/skey-1.1.5-r1 )
 	ldap? ( net-nds/openldap )
 	libedit? ( dev-libs/libedit )
 	>=dev-libs/openssl-0.9.6d
@@ -41,6 +41,8 @@ DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	virtual/os-headers
 	sys-devel/autoconf"
+RDEPEND="${RDEPEND}
+	pam? ( sys-auth/pambase )"
 PROVIDE="virtual/ssh"
 
 S=${WORKDIR}/${PARCH}
@@ -136,7 +138,7 @@ src_install() {
 	newconfd "${FILESDIR}"/sshd.confd sshd
 	keepdir /var/empty
 
-	newpamd "${FILESDIR}"/sshd.pam_include.1 sshd
+	newpamd "${FILESDIR}"/sshd.pam_include.2 sshd
 	use pam \
 		&& dosed "/^#UsePAM /s:.*:UsePAM yes:" /etc/ssh/sshd_config \
 		&& dosed "/^#PasswordAuthentication /s:.*:PasswordAuthentication no:" /etc/ssh/sshd_config
