@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/openssh-5.0_p1-r2.ebuild,v 1.1 2008/07/23 15:03:20 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/openssh-5.1_p1-r1.ebuild,v 1.3 2008/08/29 08:25:09 vapier Exp $
 
 inherit eutils flag-o-matic ccc multilib autotools pam
 
@@ -9,16 +9,17 @@ inherit eutils flag-o-matic ccc multilib autotools pam
 PARCH=${P/_/}
 
 X509_PATCH="${PARCH}+x509-6.1.1.diff.gz"
-#LDAP_PATCH="${PARCH/openssh-4.9/openssh-lpk-4.6}-0.3.9.patch"
-HPN_PATCH="${PARCH}-hpn13v3.diff.gz"
+LDAP_PATCH="${PARCH/openssh/openssh-lpk}-0.3.10.patch.gz"
+HPN_PATCH="${PARCH}-hpn13v5.diff.gz"
 
 DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="http://www.openssh.org/"
 SRC_URI="mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
 	http://www.sxw.org.uk/computing/patches/openssh-5.0p1-gsskex-20080404.patch
-	${LDAP_PATCH:+ldap? ( http://dev.inversepath.com/openssh-lpk/${LDAP_PATCH} )}
+	${LDAP_PATCH:+ldap? ( mirror://gentoo/${LDAP_PATCH} )}
 	${X509_PATCH:+X509? ( http://roumenpetrov.info/openssh/x509-6.1.1/${X509_PATCH} )}
 	${HPN_PATCH:+hpn? ( http://www.psc.edu/networking/projects/hpn-ssh/${HPN_PATCH} )}"
+	#${LDAP_PATCH:+ldap? ( http://dev.inversepath.com/openssh-lpk/${LDAP_PATCH} )}
 
 LICENSE="as-is"
 SLOT="0"
@@ -73,19 +74,20 @@ src_unpack() {
 		-e '/_PATH_XAUTH/s:/usr/X11R6/bin/xauth:/usr/bin/xauth:' \
 		pathnames.h || die
 
-	use X509 && epatch "${DISTDIR}"/${X509_PATCH} "${FILESDIR}"/${PN}-4.9_p1-x509-hpn-glue.patch
+	use X509 && epatch "${DISTDIR}"/${X509_PATCH} "${FILESDIR}"/${PN}-5.1_p1-x509-hpn-glue.patch
 	use smartcard && epatch "${FILESDIR}"/openssh-3.9_p1-opensc.patch
-	use coffee && epatch "${FILESDIR}"/openssh-5.0-coffee.patch
+	use coffee && epatch "${FILESDIR}"/openssh-5.1-coffee.patch
 	if ! use X509 ; then
 		if [[ -n ${LDAP_PATCH} ]] && use ldap ; then
-			epatch "${DISTDIR}"/${LDAP_PATCH} "${FILESDIR}"/${PN}-4.4_p1-ldap-hpn-glue.patch
-			epatch "${FILESDIR}"/${P}-lpk-64bit.patch #210110
+			# The patch for bug 210110 64-bit stuff is now included.
+			epatch "${DISTDIR}"/${LDAP_PATCH}
+			epatch "${FILESDIR}"/${PN}-5.1_p1-ldap-hpn-glue.patch
 		fi
-		epatch "${DISTDIR}"/openssh-5.0p1-gsskex-20080404.patch #115553 #216932
+		#epatch "${DISTDIR}"/openssh-5.0p1-gsskex-20080404.patch #115553 #216932
 	else
 		use ldap && ewarn "Sorry, X509 and ldap don't get along, disabling ldap"
-		epatch "${FILESDIR}"/${PN}-4.7_p1-GSSAPI-dns.patch #165444 integrated into gsskex
 	fi
+	epatch "${FILESDIR}"/${PN}-4.7_p1-GSSAPI-dns.patch #165444 integrated into gsskex
 	[[ -n ${HPN_PATCH} ]] && use hpn && epatch "${DISTDIR}"/${HPN_PATCH}
 	epatch "${FILESDIR}"/${PN}-4.7p1-selinux.diff #191665
 
@@ -113,12 +115,11 @@ src_compile() {
 		--sysconfdir=/etc/ssh \
 		--libexecdir=/usr/$(get_libdir)/misc \
 		--datadir=/usr/share/openssh \
-		--disable-suid-ssh \
 		--with-privsep-path=/var/empty \
 		--with-privsep-user=sshd \
 		--with-md5-passwords \
 		--with-ssl-engine \
-		$(use_with ldap) \
+		$(use ldap && $(use_with ldap)) \
 		$(use_with libedit) \
 		$(use_with kerberos kerberos5 /usr) \
 		$(use_with tcpd tcp-wrappers) \
