@@ -20,6 +20,7 @@ DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
 src_compile() {
+	./autogen.sh
 	econf --disable-dependency-tracking --disable-gtktest
 	emake || die "emake failed."
 }
