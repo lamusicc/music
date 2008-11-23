@@ -18,7 +18,8 @@ DEPEND="crypt? ( >=app-crypt/gnupg-1.2 )
 		prelude? ( >=dev-libs/libprelude-0.8.10 )
 		>=sys-apps/sed-4
 		app-arch/tar
-		app-arch/gzip"
+		app-arch/gzip
+		media-gfx/imagemagick"
 
 RDEPEND="${DEPEND}"
 
