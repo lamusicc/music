@@ -6,6 +6,7 @@ inherit fdo-mime subversion
 
 ESVN_REPO_URI="https://parcellite.svn.sourceforge.net/svnroot/parcellite/trunk"
 ESVN_PROJECT="parcellite"
+ESVN_BOOTSTRAP="./autogen.sh"
 
 DESCRIPTION="A lightweight GTK+ based clipboard manager."
 HOMEPAGE="http://parcellite.sourceforge.net/"
@@ -20,7 +21,6 @@ DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
 src_compile() {
-	./autogen.sh
 	econf --disable-dependency-tracking --disable-gtktest
 	emake || die "emake failed."
 }
