@@ -14,16 +14,22 @@ SRC_URI="http://downloads.sourceforge.net/tunctl/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~ppc ~x86-fbsd"
-IUSE=""
+IUSE="with_man"
 
-DEPEND="app-text/docbook-sgml-utils"
+DEPEND="with_man? ( app-text/docbook-sgml-utils )"
 
 RDEPEND="${DEPEND}"
 
 #S="${WORKDIR}/tunctl"
 
 src_unpack() {
+	if use with_man; then
 	unpack "${A}"
+else
+	unpack "${A}"
+	cd "${S}"
+	epatch "${FILESDIR}"/Makefile.patch
+fi
 }
 
 src_compile() {
