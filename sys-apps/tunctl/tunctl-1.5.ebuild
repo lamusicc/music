@@ -6,7 +6,6 @@ inherit eutils
 
 RESTRICT="mirror"
 
-
 DESCRIPTION="tunctl is a small tool for controlling Linux TUN/TAP devices."
 HOMEPAGE="http://tunctl.sourceforge.net/"
 SRC_URI="http://downloads.sourceforge.net/tunctl/${P}.tar.gz"
@@ -19,8 +18,6 @@ IUSE="with_man"
 DEPEND="with_man? ( app-text/docbook-sgml-utils )"
 
 RDEPEND="${DEPEND}"
-
-#S="${WORKDIR}/tunctl"
 
 src_unpack() {
 	if use with_man; then
