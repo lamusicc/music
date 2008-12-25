@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+inherit eutils
 
 RESTRICT="mirror"
 
@@ -11,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~ppc ~x86-fbsd"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 DEPEND="doc? ( app-text/docbook-sgml-utils )"
