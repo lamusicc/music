@@ -1,0 +1,32 @@
+--- Makefile.orig	2008-12-25 19:27:17.346585884 +0100
++++ Makefile	2008-12-25 20:15:37.557587785 +0100
+@@ -6,12 +6,13 @@
+ 
+ DIST = Makefile $(PACKAGE).spec $(PACKAGE).c $(PACKAGE).sgml ChangeLog
+ 
+-CFLAGS = -g -Wall
++CFLAGS ?= -g -Wall
+ 
+ BIN_DIR ?= /usr/sbin
+-MAN_DIR ?= /usr/share/man/man$(MANS)
+ 
+-all : $(BIN) $(MAN)
++all : $(BIN)
++
++man : $(MAN)
+ 
+ $(BIN) : $(BIN).c
+ 	$(CC) $(CFLAGS) -o $(BIN) $(BIN).c
+@@ -22,11 +23,9 @@
+ clean : 
+ 	rm -f $(BIN) $(OBJS) $(MAN) *~ manpage.*
+ 
+-install : $(BIN) $(MAN)
++install : $(BIN)
+ 	install -d $(DESTDIR)$(BIN_DIR)
+ 	install $(BIN) $(DESTDIR)$(BIN_DIR)
+-	install -d $(DESTDIR)$(MAN_DIR)
+-	install $(MAN) $(DESTDIR)$(MAN_DIR)
+ 
+ .PHONY: dist
+ dist: distcheck
