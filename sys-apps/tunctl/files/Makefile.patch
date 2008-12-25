@@ -1,0 +1,39 @@
+--- Makefile.orig	2008-12-25 19:49:06.103309655 +0100
++++ Makefile	2008-12-25 19:54:42.025906673 +0100
+@@ -1,32 +1,25 @@
+ PACKAGE = tunctl
+ VERSION = 1.5
+ BIN = $(PACKAGE)
+-MANS = 8
+-MAN = $(PACKAGE).$(MANS)
+ 
+-DIST = Makefile $(PACKAGE).spec $(PACKAGE).c $(PACKAGE).sgml ChangeLog
++DIST = Makefile $(PACKAGE).spec $(PACKAGE).c ChangeLog
+ 
+-CFLAGS = -g -Wall
++CFLAGS ?= -g -Wall
+ 
+ BIN_DIR ?= /usr/sbin
+-MAN_DIR ?= /usr/share/man/man$(MANS)
+ 
+ all : $(BIN) $(MAN)
+ 
+ $(BIN) : $(BIN).c
+ 	$(CC) $(CFLAGS) -o $(BIN) $(BIN).c
+ 
+-$(MAN) : $(PACKAGE).sgml
+-	docbook2man $(PACKAGE).sgml
+ 
+-clean : 
+-	rm -f $(BIN) $(OBJS) $(MAN) *~ manpage.*
++clean :
++	rm -f $(BIN) $(OBJS)
+ 
+ install : $(BIN) $(MAN)
+ 	install -d $(DESTDIR)$(BIN_DIR)
+ 	install $(BIN) $(DESTDIR)$(BIN_DIR)
+-	install -d $(DESTDIR)$(MAN_DIR)
+-	install $(MAN) $(DESTDIR)$(MAN_DIR)
+ 
+ .PHONY: dist
+ dist: distcheck
