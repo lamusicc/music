@@ -26,15 +26,15 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	if use !lafile && use !layman ; then
-		epatch "${FILESDIR}/no_lafilefixer_no_layman.patch"
+		epatch "${WORKDIR}/${P}/no_lafilefixer_no_layman.patch"
 	fi
 
 	if use !lafile && use layman ; then
-		epatch "${FILESDIR}/no_lafilefixer.patch"
+		epatch "${WORKDIR}/${P}/no_lafilefixer.patch"
 	fi
 
 	if use lafile && use !layman ; then
-		epatch "${FILESDIR}/no_layman.patch"
+		epatch "${WORKDIR}/${P}/no_layman.patch"
 	fi
 }
 		
