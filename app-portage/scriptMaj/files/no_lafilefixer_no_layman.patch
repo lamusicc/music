@@ -1,5 +1,5 @@
---- scriptMaj	2010-08-30 14:25:49.709000184 +0200
-+++ scriptMaj_no_lafiefixer_layman	2010-08-30 14:28:33.791000186 +0200
+--- scriptMaj	2010-08-30 15:16:48.075000187 +0200
++++ scriptMaj_no_lafiefixer_layman	2010-08-30 15:19:05.677000184 +0200
 @@ -60,22 +60,6 @@ color_blue()
  
  color_blue "Update Portage Tree And Layman's Overlays"
@@ -20,7 +20,7 @@
 -    fi
 -}
 -
- eix_update()
+ eix_sync()
  {
      if which eix-sync > /dev/null 2>&1 ; then
 @@ -108,14 +92,6 @@ emerge_world()
@@ -42,8 +42,8 @@
  }
  
  # Menu for interactive update
--function_update="layman_sync layman_list eix_update emerge_portage fix_package emerge_world lafile_fixer revdep_rebuild"
-+function_update="eix_update emerge_portage fix_package emerge_world revdep_rebuild"
+-function_update="layman_sync layman_list eix_sync emerge_portage fix_package emerge_world lafile_fixer revdep_rebuild"
++function_update="eix_sync emerge_portage fix_package emerge_world revdep_rebuild"
  
  for i in $function_update ; do
      color_blue "Your are on menu for update your Gentoo/Linux, enter yes or no for update $i"
