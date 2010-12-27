@@ -29,3 +29,4 @@ src_install()
 {
 		dobin scriptMaj || die
 }
+
