@@ -12,7 +12,7 @@ SRC_URI="http://ansi-color.googlecode.com/files/ansi-color-0.6.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DEPEND="app-shells/bash"
