@@ -15,7 +15,7 @@ http://server.lamusic.dyndns.info/ebuild/archive/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64 ~ppc ~x86-fbsd"
-IUSE="lafile layman gentoolkit"
+IUSE=""
 
 DEPEND="app-shells/ansi-color
 		app-portage/eix
@@ -25,59 +25,7 @@ DEPEND="app-shells/ansi-color
 
 RDEPEND="${DEPEND}"
 
-src_install() {
-	if use !lafile && use !layman && use !gentoolkit ; then
-		dobin scriptMaj_color || die
-		dobin scriptMaj_menu || die
+src_install()
+{
 		dobin scriptMaj || die
-	fi
-
-	if use !lafile && use !layman && use gentoolkit ; then
-		dobin scriptMaj_color || die
-		dobin scriptMaj_menu || die
-		dobin scriptMaj || die
-		dobin scriptMaj_revdep || die
-	fi
-
-	if use !lafile && use layman && use gentoolkit ; then
-		dobin scriptMaj_color || die
-		dobin scriptMaj_menu || die
-		dobin scriptMaj || die
-		dobin scriptMaj_revdep || die
-		dobin scriptMaj_layman || die
-	fi
-
-	if use lafile && use !layman && use !gentoolkit ; then
-		dobin scriptMaj_color || die
-		dobin scriptMaj_menu || die
-		dobin scriptMaj || die
-		dobin scriptMaj_lafile || die
-	fi
-
-	if use lafile && use !layman && use gentoolkit ; then
-		dobin scriptMaj_color || die
-		dobin scriptMaj_menu || die
-		dobin scriptMaj || die
-		dobin scriptMaj_lafile || die
-		dobin scriptMaj_revdep || die
-	fi
-
-
-	if use lafile && use layman && use !gentoolkit ; then
-		dobin scriptMaj_color || die
-		dobin scriptMaj_menu || die
-		dobin scriptMaj || die
-		dobin scriptMaj_lafile || die
-		dobin scriptMaj_layman || die
-	fi
-
-	if use lafile && use layman && use gentoolkit ; then
-		dobin scriptMaj_color || die
-		dobin scriptMaj_menu || die
-		dobin scriptMaj || die
-		dobin scriptMaj_lafile || die
-		dobin scriptMaj_layman || die
-		dobin scriptMaj_revdep || die
-	fi
-
 }
