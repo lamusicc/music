@@ -9,7 +9,7 @@ inherit eutils
 DESCRIPTION="A script to upgrade your gentoo system support for baselayout 2 and no multilib profile"
 HOMEPAGE="http://lamusic.dyndns.info/"
 SRC_URI="http://lamusic.dyndns.info/ebuild/archive/${P}.tar.gz
-http://server.lamusic.dyndns.info/ebuild/archive/${P}.tar.gz"
+		 http://server.lamusic.dyndns.info/ebuild/archive/${P}.tar.gz"
 
 
 LICENSE="GPL-2"
@@ -19,9 +19,9 @@ IUSE=""
 
 DEPEND="app-shells/ansi-color
 		app-portage/eix
-		lafile? ( dev-util/lafilefixer )
-		layman?	( app-portage/layman )
-		gentoolkit? ( app-portage/gentoolkit )"
+		dev-util/lafilefixer
+		app-portage/layman
+		app-portage/gentoolkit"
 
 RDEPEND="${DEPEND}"
 
