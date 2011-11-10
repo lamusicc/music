@@ -3,9 +3,9 @@
 
   <overlay
       type = "git"
-      src  = "git://lamusic.dyndns.info/layman/music.git"
-      contact = "lamusic.gentoo@orange.fr"
-      status  = "unofficial"
+      src  = "git://github.com/lamusicc/music.git"
+      contact = "lamusicc@gmail.com"
+      status  = "official"
       name = "music">
 
     <link>
