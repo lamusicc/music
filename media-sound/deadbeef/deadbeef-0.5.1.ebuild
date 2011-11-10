@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-inherit git-2 fdo-mime autotools gnome2
+inherit git-2 fdo-mime autotools
 
 EGIT_REPO_URI="git://deadbeef.git.sourceforge.net/gitroot/deadbeef/deadbeef"
 EGIT_MASTER="master"
