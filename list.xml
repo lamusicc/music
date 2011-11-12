@@ -1,20 +1,20 @@
 <?xml version="1.0" ?>
 <layman>
 
-  <overlay
-      type = "git"
-      src  = "git://github.com/lamusicc/music.git"
-      contact = "lamusicc@gmail.com"
-      status  = "official"
-      name = "music">
+    <overlay
+        type = "git"
+        src  = "git://github.com/lamusicc/music.git"
+        contact = "lamusicc@gmail.com"
+        status  = "official"
+        name = "music">
 
-    <link>
-	https://github.com/lamusicc/music
-    </link>
+        <link>
+            https://github.com/lamusicc/music
+        </link>
 
-    <description>
-      music overlay
-    </description>
-  </overlay>
+        <description>
+            music overlay
+        </description>
+    </overlay>
 </layman>
 
