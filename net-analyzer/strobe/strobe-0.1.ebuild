@@ -8,8 +8,7 @@ RESTRICT="mirror"
 
 DESCRIPTION="A tiny scanner for tcp socket 1995"
 HOMEPAGE="http://lamusic.dyndns.info/"
-SRC_URI="http://lamusic.dyndns.info/ebuild/archive/${P}.tar.gz
-		 http://server.lamusic.dyndns.info/ebuild/archive/${P}.tar.gz"
+SRC_URI="https://raw.github.com/lamusicc/archives/master/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

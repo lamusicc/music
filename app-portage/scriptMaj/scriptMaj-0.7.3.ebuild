@@ -8,8 +8,7 @@ inherit eutils
 
 DESCRIPTION="A script to upgrade your gentoo system support for baselayout 2 and no multilib profile"
 HOMEPAGE="http://lamusic.dyndns.info/"
-SRC_URI="http://lamusic.dyndns.info/ebuild/archive/${P}.tar.gz
-		 http://server.lamusic.dyndns.info/ebuild/archive/${P}.tar.gz"
+SRC_URI="https://raw.github.com/lamusicc/archives/master/${P}.tar.gz"
 
 
 LICENSE="GPL-2"
