@@ -2,9 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="3"
+
 inherit eutils
 
-DESCRIPTION="Random password generator with freebsd md5 and openssl random"
+DESCRIPTION="Random password generator with freebsd md5 and openssl random."
 HOMEPAGE="http://packages.debian.org/sid/admin/makepasswd"
 SRC_URI="mirror://debian/pool/main/m/makepasswd/${P/-/_}.orig.tar.gz
          mirror://debian/pool/main/m/makepasswd/${PN}_1.10-5.diff.gz"
