@@ -1,4 +1,4 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -6,7 +6,7 @@ inherit eutils
 
 
 DESCRIPTION="Bluediving is a Bluetooth penetration testing suite"
-HOMEPAGE="http://downloads.sourceforge.net/"
+HOMEPAGE="http://sourceforge.net/projects/bluediving/"
 SRC_URI="http://downloads.sourceforge.net/bluediving/${P}.tgz"
 
 LICENSE="GPL-2.1"
