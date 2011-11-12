@@ -2,11 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="3"
+
 inherit cvs versionator
 
 ECVS_SERVER="cvs.motion-twin.com:/cvsroot"
 
-DESCRIPTION="The Motion-Twin ActionScript 2 Compiler"
+DESCRIPTION="The Motion-Twin ActionScript 2 Compiler."
 HOMEPAGE="http://www.mtasc.org"
 SRC_URI="http://www.mtasc.org/doc/mtasc/install.ml"
 
@@ -53,4 +55,3 @@ pkg_postinst() {
 	einfo "so when needed you should compile with:"
 	einfo "mtasc -cp /usr/share/mtasc/std ..."
 }
-

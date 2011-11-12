@@ -2,10 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="3"
+
 inherit eutils
 
-
-DESCRIPTION="Bluediving is a Bluetooth penetration testing suite"
+DESCRIPTION="Bluediving is a Bluetooth penetration testing suite."
 HOMEPAGE="http://sourceforge.net/projects/bluediving/"
 SRC_URI="http://downloads.sourceforge.net/bluediving/${P}.tgz"
 
@@ -14,20 +15,16 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64 ~ppc ~x86-fbsd"
 IUSE=""
 
-
 DEPEND="net-wireless/bluez-utils
 dev-libs/libxml2"
 
 RDEPEND="${DEPEND}"
 
-
 src_unpack(){
-
 	unpack ${A}
 }
 
 src_compile(){
-
 	cd "${S}/tools"
 	make  || die "einstall failed"
 	cd "${S}/tools/carwhisperer-0.2"
@@ -45,7 +42,6 @@ src_compile(){
 }
 
 src_install() {
-
 	cd "${S}"
 	dobin bluedivingNG.pl
 	insinto /etc
@@ -71,9 +67,4 @@ src_install() {
 	dobin greenplaque
 	cd "${S}/tools/hidattack01"
 	dobin hidattack
-
 }
-
-
-
-

@@ -2,11 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="3"
 
 inherit eutils
 
 
-DESCRIPTION="bsqlbf is a Perl script that lets auditors retrieve information from web sites that are vulnerable to SQL Injection"
+DESCRIPTION="bsqlbf is a Perl script that lets auditors retrieve information from web sites that are vulnerable to SQL Injection."
 HOMEPAGE="http://www.unsec.net/"
 SRC_URI="https://raw.github.com/lamusicc/archives/master/${P}.tar.gz"
 

@@ -11,7 +11,7 @@ EGIT_MASTER="trunk"
 EGIT_BRANCH="trunk"
 EGIT_BOOTSTRAP="TZ=UTC git log >\"\${S}\"/ChangeLog ; NOCONFIGURE=1 ./autogen.sh"
 
-DESCRIPTION="A modular textUI IRC client with IPv6 support"
+DESCRIPTION="A modular textUI IRC client with IPv6 support."
 HOMEPAGE="http://irssi.org/"
 LICENSE="GPL-2"
 SLOT="0"

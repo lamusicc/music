@@ -2,11 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="3"
+
 inherit eutils
 
 RESTRICT="mirror"
 
-DESCRIPTION="A tiny scanner for tcp socket 1995"
+DESCRIPTION="A tiny scanner for tcp socket 1995."
 HOMEPAGE="http://lamusic.dyndns.info/"
 SRC_URI="https://raw.github.com/lamusicc/archives/master/${P}.tar.gz"
 

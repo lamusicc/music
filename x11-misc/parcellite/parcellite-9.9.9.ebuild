@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=3
+EAPI="3"
+
 inherit fdo-mime autotools subversion
 
 ESVN_REPO_URI="https://parcellite.svn.sourceforge.net/svnroot/parcellite/trunk"
@@ -26,6 +27,8 @@ DEPEND="${RDEPEND}
 		dev-util/intltool )"
 
 src_prepare() {
+	# Doh! Tarballs contains compiled target
+	emake clean
 	eautoreconf
 }
 

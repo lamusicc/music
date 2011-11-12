@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-DESCRIPTION="swfmill is an xml2swf and swf2xml processor with import
-functionalities."
+EAPI="3"
+
+DESCRIPTION="swfmill is an xml2swf and swf2xml processor with import functionalities."
 HOMEPAGE="http://swfmill.org/";
 SRC_URI="http://swfmill.org/releases/${P}.tar.gz";
 
@@ -19,7 +20,6 @@ media-libs/freetype
 media-libs/libpng"
 RDEPEND="$DEPEND"
 
-
 src_compile() {
 	econf || die "econf failed"
 	emake || die "emake failed"
@@ -29,4 +29,3 @@ src_install() {
 	emake DESTDIR="${D}" install || die "install failed"
 	dodoc AUTHORS COPYING INSTALL NEWS README TODO
 }
-
