@@ -17,15 +17,15 @@ KEYWORDS="~x86 ~amd64 ~ppc ~x86-fbsd"
 IUSE=""
 
 DEPEND="app-shells/ansi-color
-		app-portage/eix
-		dev-util/lafilefixer
-		app-portage/layman
-		app-portage/gentoolkit"
+app-portage/eix
+dev-util/lafilefixer
+app-portage/layman
+app-portage/gentoolkit"
 
 RDEPEND="${DEPEND}"
 
 src_install()
 {
-		dobin scriptMaj || die
+	dobin scriptMaj || die
 }
 
