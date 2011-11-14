@@ -6,8 +6,6 @@ EAPI="3"
 
 inherit eutils
 
-EAPI=3
-
 DESCRIPTION="Ansi Color is a simple bash shell script that makes it easy to color and format echo'd text."
 HOMEPAGE="http://code.google.com/p/ansi-color/"
 SRC_URI="http://ansi-color.googlecode.com/files/ansi-color-0.6.tar.gz"
@@ -25,4 +23,3 @@ src_install() {
 	dobin color || die
 	doman color.1 || die
 }
-
