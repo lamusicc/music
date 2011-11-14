@@ -10,7 +10,6 @@ DESCRIPTION="A script to upgrade your gentoo system support for baselayout 2 and
 HOMEPAGE="http://lamusic.dyndns.info/"
 SRC_URI="https://raw.github.com/lamusicc/archives/master/${P}.tar.gz"
 
-
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64 ~ppc ~x86-fbsd"
@@ -28,4 +27,3 @@ src_install()
 {
 	dobin scriptMaj || die
 }
-

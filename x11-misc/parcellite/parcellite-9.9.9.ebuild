@@ -20,11 +20,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 
 RDEPEND=">=x11-libs/gtk+-2.10:2
-	>=dev-libs/glib-2.14:2"
+>=dev-libs/glib-2.14:2"
 DEPEND="${RDEPEND}
-	dev-util/pkgconfig
-	nls? ( sys-devel/gettext
-		dev-util/intltool )"
+dev-util/pkgconfig
+nls? ( sys-devel/gettext
+dev-util/intltool )"
 
 src_prepare() {
 	# Doh! Tarballs contains compiled target
