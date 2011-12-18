@@ -25,6 +25,6 @@ src_install()
 	if [ ! -f /usr/lib/colors_bash_lib ] ; then
 		dolib colors_bash_lib || die
 	fi
-	doconfd syssquashfsd
+	doconfd syssquashfsd || die
 }
 

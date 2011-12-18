@@ -26,5 +26,7 @@ RDEPEND="${DEPEND}"
 src_install()
 {
 	dobin scriptMaj || die
-	dolib colors_bash_lib || die
+	if [ ! -f /usr/lib/colors_bash_lib ] ; then
+		dolib colors_bash_lib || die
+	fi
 }
