@@ -15,24 +15,24 @@ DESCRIPTION="A modular textUI IRC client with IPv6 support."
 HOMEPAGE="http://irssi.org/"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~x86 ~x86-fbsd"
 IUSE="ipv6 perl ssl socks5"
 
 RDEPEND="sys-libs/ncurses
-		>=dev-libs/glib-2.2.1
-		ssl? ( dev-libs/openssl )
-		perl? ( dev-lang/perl )
-		socks5? ( >=net-proxy/dante-1.1.18 )"
+>=dev-libs/glib-2.2.1
+ssl? ( dev-libs/openssl )
+perl? ( dev-lang/perl )
+socks5? ( >=net-proxy/dante-1.1.18 )"
 
 DEPEND="${RDEPEND}
-		>=dev-util/pkgconfig-0.9.0
-		>=sys-devel/autoconf-2.58
-		dev-lang/perl
-		www-client/lynx"
+>=dev-util/pkgconfig-0.9.0
+>=sys-devel/autoconf-2.58
+dev-lang/perl
+www-client/lynx"
 
 RDEPEND="${RDEPEND}
-		perl? ( !net-im/silc-client )
-		!net-irc/irssi"
+perl? ( !net-im/silc-client )
+!net-irc/irssi"
 
 src_configure() {
 	epunt_cxx
