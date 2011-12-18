@@ -22,9 +22,7 @@ src_install()
 {
 	dobin syssquashfs_create || die
 	dobin syssquashfs_update || die
-	if [ ! -f /usr/lib/colors_bash_lib ] ; then
-		dolib colors_bash_lib || die
-	fi
+	dolib colors_bash_lib || die
 	doconfd syssquashfsd || die
 }
 
