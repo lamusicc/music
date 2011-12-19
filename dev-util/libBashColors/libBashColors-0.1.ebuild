@@ -18,5 +18,5 @@ RDEPEND="${DEPEND}"
 
 src_install()
 {
-	dolib colors_bash_lib || die
+	dolib libBashColors || die
 }
