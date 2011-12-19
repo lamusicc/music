@@ -4,7 +4,7 @@
 
 EAPI=3
 
-DESCRIPTION="Suite of bash script for make parts of system in squashfs."
+DESCRIPTION="Lib for colorise shell script."
 HOMEPAGE="https://github.com/lamusicc"
 SRC_URI="https://raw.github.com/lamusicc/archives/master/${P}.tar.bz2"
 
@@ -13,16 +13,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="sys-fs/squashfs-tools[gzip,lzma,lzo]
-sys-fs/aufs3[kernel-patch]
-dev-util/libBashColors"
-
+DEPEND=""
 RDEPEND="${DEPEND}"
 
 src_install()
 {
-	dobin syssquashfs_create || die
-	dobin syssquashfs_update || die
-	doconfd syssquashfsd || die
+	dolib colors_bash_lib || die
 }
-

@@ -19,12 +19,12 @@ DEPEND="app-shells/ansi-color
 app-portage/eix
 dev-util/lafilefixer
 app-portage/layman
-app-portage/gentoolkit"
+app-portage/gentoolkit
+dev-util/libBashColors"
 
 RDEPEND="${DEPEND}"
 
 src_install()
 {
 	dobin scriptMaj || die
-	dolib colors_bash_lib || die
 }
