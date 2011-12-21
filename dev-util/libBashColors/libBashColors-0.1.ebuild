@@ -13,7 +13,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=""
+DEPEND="app-shells/ansi-color"
+
 RDEPEND="${DEPEND}"
 
 src_install()

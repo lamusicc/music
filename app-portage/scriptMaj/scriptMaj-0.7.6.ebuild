@@ -15,8 +15,7 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64 ~ppc ~x86-fbsd"
 IUSE=""
 
-DEPEND="app-shells/ansi-color
-app-portage/eix
+DEPEND="app-portage/eix
 dev-util/lafilefixer
 app-portage/layman
 app-portage/gentoolkit
