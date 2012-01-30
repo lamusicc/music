@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -60,10 +60,6 @@ src_prepare() {
 		# set default gentoo path
 		sed -e 's;/etc/timidity++/timidity-freepats.cfg;/usr/share/timidity/freepats/timidity.cfg;g' \
 			-i "${S}/plugins/wildmidi/wildmidiplug.c"
-	fi
-
-	if use ffmpeg; then
-		epatch "${FILESDIR}/${P}-alt-libav-using.patch"
 	fi
 
 	if use linguas_zh_CN; then
