@@ -80,6 +80,9 @@ src_install()
 	if use tools; then
 		dodir /bin
 		dosym /bin/kmod /bin/lsmod
+		dosym /lib/libkmod.so.2.1.1 /usr/lib/libkmod.so.2.1.1
+		dosym /usr/lib/libkmod.so.2.1.1 /usr/lib/libkmod.so
+		dosym /usr/lib/libkmod.so.2.1.1 /usr/lib/libkmod.so.2
 		dodir /sbin
 		local cmd
 		for cmd in depmod insmod modinfo modprobe rmmod; do
