@@ -81,6 +81,8 @@ src_install()
 		dodir /bin
 		dosym /bin/kmod /bin/lsmod
 		dosym /bin/kmod /usr/bin/kmod
+		dosym /lib64/pkgconfig/libkmod.pc /usr/lib/pkgconfig/libkmod.pc
+		dosym /include/libkmod.h /usr/include/libkmod.h
 		dosym /lib/libkmod.so.2.1.1 /usr/lib/libkmod.so.2.1.1
 		dosym /usr/lib/libkmod.so.2.1.1 /usr/lib/libkmod.so
 		dosym /usr/lib/libkmod.so.2.1.1 /usr/lib/libkmod.so.2
