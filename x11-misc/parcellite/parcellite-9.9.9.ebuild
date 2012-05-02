@@ -4,7 +4,7 @@
 
 EAPI="3"
 
-inherit fdo-mime autotools subversion
+inherit fdo-mime autotools subversion eutils
 
 ESVN_REPO_URI="https://parcellite.svn.sourceforge.net/svnroot/parcellite/trunk"
 ESVN_PROJECT="parcellite"
@@ -25,6 +25,10 @@ DEPEND="${RDEPEND}
 dev-util/pkgconfig
 nls? ( sys-devel/gettext
 dev-util/intltool )"
+
+post_src_prepare() {
+	epatch_user
+}
 
 src_prepare() {
 	# Doh! Tarballs contains compiled target
