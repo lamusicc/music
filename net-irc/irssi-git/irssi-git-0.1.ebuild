@@ -4,12 +4,12 @@
 
 EAPI="3"
 
-inherit perl-module flag-o-matic git-2
+inherit perl-module flag-o-matic git-2 autotools
 
 EGIT_REPO_URI="git://git.irssi.org/irssi"
 EGIT_MASTER="trunk"
 EGIT_BRANCH="trunk"
-EGIT_BOOTSTRAP="TZ=UTC git log >\"\${S}\"/ChangeLog ; NOCONFIGURE=1 ./autogen.sh"
+#EGIT_BOOTSTRAP="TZ=UTC git log >\"\${S}\"/ChangeLog ; NOCONFIGURE=1 ./autogen.sh"
 
 DESCRIPTION="A modular textUI IRC client with IPv6 support."
 HOMEPAGE="http://irssi.org/"
@@ -34,8 +34,16 @@ RDEPEND="${RDEPEND}
 perl? ( !net-im/silc-client )
 !net-irc/irssi"
 
-src_configure() {
+src_prepare() {
 	epunt_cxx
+	elibtoolize  # for Darwin bundle
+	TZ=UTC git log >\"\${S}\"/ChangeLog || die
+	sed -i -e /^autoreconf/d autogen.sh || die
+	NOCONFIGURE=1 ./autogen.sh || die
+	eautoreconf
+}
+
+src_configure() {
 	econf \
 		--with-proxy \
 		--with-ncurses \
@@ -54,7 +62,7 @@ src_compile() {
 src_install() {
 	emake \
 		DESTDIR="${D}" \
-		docdir=/usr/share/doc/${PF} \
+		docdir="${EPREFIX}"/usr/share/doc/${PF}
 		install || die "make install failed"
 
 	use perl && fixlocalpod
