@@ -1,10 +1,10 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI="3"
 
-inherit perl-module flag-o-matic git-2 autotools
+inherit perl-module flag-o-matic git-2 autotools libtool
 
 EGIT_REPO_URI="git://git.irssi.org/irssi"
 EGIT_MASTER="trunk"
@@ -62,7 +62,7 @@ src_compile() {
 src_install() {
 	emake \
 		DESTDIR="${D}" \
-		docdir="${EPREFIX}"/usr/share/doc/${PF}
+		docdir=/usr/share/doc/${PF}
 		install || die "make install failed"
 
 	use perl && fixlocalpod
