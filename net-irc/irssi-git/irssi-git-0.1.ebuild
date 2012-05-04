@@ -46,7 +46,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		--with-proxy \
-		--with-ncurses \
+		--with-ncurses="${EPREFIX}"/usr \
 		--with-perl-lib=vendor \
 		$(use_with perl) \
 		$(use_with socks5 socks) \
