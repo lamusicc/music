@@ -53,8 +53,7 @@ RDEPEND="aac? ( media-libs/faad2 )
 	zip? ( dev-libs/libzip
 		sys-libs/zlib )"
 
-DEPEND="infobar? ( media-sound/deadbeef-infobar )
-	dev-util/intltool
+DEPEND="dev-util/intltool
 	${RDEPEND}"
 S="${WORKDIR}/${PN}-${MY_PV}"
 pkg_setup() {
