@@ -37,7 +37,7 @@ perl? ( !net-im/silc-client )
 src_prepare() {
 	epunt_cxx
 	elibtoolize  # for Darwin bundle
-	TZ=UTC git log >\"\${S}\"/ChangeLog || die
+	TZ=UTC git log > "${S}"/ChangeLog || die
 	sed -i -e /^autoreconf/d autogen.sh || die
 	NOCONFIGURE=1 ./autogen.sh || die
 	eautoreconf
