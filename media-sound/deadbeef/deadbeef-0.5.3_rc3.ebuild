@@ -39,7 +39,6 @@ RDEPEND="aac? ( media-libs/faad2 )
 	flac? ( media-libs/flac )
 	gtk2? ( x11-libs/gtk+:2 )
 	gtk3? ( x11-libs/gtk+:3 )
-	infobar? ( media-sound/deadbeef-infobar )
 	lastfm? ( net-misc/curl )
 	notify? ( sys-apps/dbus )
 	midi? ( media-sound/timidity-freepats )
@@ -54,7 +53,7 @@ RDEPEND="aac? ( media-libs/faad2 )
 	zip? ( dev-libs/libzip
 		sys-libs/zlib )"
 
-DEPEND="
+DEPEND="infobar? ( media-sound/deadbeef-infobar )
 	dev-util/intltool
 	${RDEPEND}"
 S="${WORKDIR}/${PN}-${MY_PV}"
