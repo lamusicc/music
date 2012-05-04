@@ -62,7 +62,7 @@ src_compile() {
 src_install() {
 	emake \
 		DESTDIR="${D}" \
-		docdir=/usr/share/doc/${PF}
+		docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		install || die "make install failed"
 
 	use perl && fixlocalpod
