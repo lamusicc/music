@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="sys-fs/squashfs-tools[xz,lzo]
+DEPEND="sys-fs/squashfs-tools[xz,lzo,lzma]
 		sys-fs/aufs3[kernel-patch]
 		dev-util/libBashColors"
 
