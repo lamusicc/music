@@ -30,5 +30,6 @@ DEPEND="
 src_install() {
 	cd deadbeef-infobar/
 	insinto /usr/$(get_libdir)/deadbeef
-	doins ddb_infobar.so
+	doins ddb_infobar_gtk2.so
+	doins ddb_infobar_gtk3.so
 }
