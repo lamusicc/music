@@ -4,6 +4,8 @@
 
 EAPI=4
 
+inherit fdo-mime autotools eutils
+
 DESCRIPTION="ClipIt is a lightweight, fully featured GTK+ clipboard manager."
 HOMEPAGE="http://sourceforge.net/projects/gtkclipit/"
 SRC_URI="http://sourceforge.net/projects/gtkclipit/files/Version%201/${P}.tar.gz"
