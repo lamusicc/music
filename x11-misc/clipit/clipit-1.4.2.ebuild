@@ -30,7 +30,7 @@ src_install() {
 	emake DESTDIR="${D}" install || die
 	dobin src/clipit || die "dobin failed"
 	doman doc/clipit.1 || die "doman failed"
-	dodoc AUTHORS NEWS README TODO ABOUT-NLS
+	dodoc AUTHORS NEWS README ABOUT-NLS
 }
 
 pkg_postinst() {
