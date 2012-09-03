@@ -10,7 +10,7 @@ DESCRIPTION="ClipIt is a lightweight, fully featured GTK+ clipboard manager."
 HOMEPAGE="http://sourceforge.net/projects/gtkclipit/"
 SRC_URI="http://sourceforge.net/projects/gtkclipit/files/Version%201/${P}.tar.gz"
 
-LICENSE=""
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
@@ -27,9 +27,10 @@ src_configure() {
 }
 
 src_install() {
-	#emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install || die
 	dobin src/clipit || die "dobin failed"
 	doman doc/clipit.1 || die "doman failed"
+	dodoc AUTHORS NEWS README TODO ABOUT-NLS
 }
 
 pkg_postinst() {
