@@ -10,7 +10,7 @@ RESTRICT="mirror"
 
 
 DESCRIPTION="A tiny scanner for tcp socket 1995."
-HOMEPAGE="http://lamusic.dyndns.info/"
+HOMEPAGE="https://github.com/lamusicc"
 SRC_URI="https://raw.github.com/lamusicc/archives/master/${P}.tar.gz"
 
 LICENSE="GPL-2"

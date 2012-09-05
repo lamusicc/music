@@ -7,7 +7,7 @@ EAPI="3"
 inherit eutils
 
 DESCRIPTION="A script to upgrade your gentoo system support for baselayout 2 and no multilib profile."
-HOMEPAGE="http://lamusic.dyndns.info/"
+HOMEPAGE="https://github.com/lamusicc"
 SRC_URI="https://raw.github.com/lamusicc/archives/master/${P}.tar.gz"
 
 LICENSE="GPL-2"
