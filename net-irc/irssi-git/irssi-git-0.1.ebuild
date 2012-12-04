@@ -25,7 +25,7 @@ perl? ( dev-lang/perl )
 socks5? ( >=net-proxy/dante-1.1.18 )"
 
 DEPEND="${RDEPEND}
->=dev-util/pkgconfig-0.9.0
+virtual/pkgconfig
 >=sys-devel/autoconf-2.58
 dev-lang/perl
 www-client/lynx"
