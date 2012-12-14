@@ -4,7 +4,7 @@
 
 EAPI=4
 
-inherit fdo-mime autotools eutils
+inherit fdo-mime autotools eutils gnome2-utils
 
 DESCRIPTION="ClipIt is a lightweight, fully featured GTK+ clipboard manager."
 HOMEPAGE="http://sourceforge.net/projects/gtkclipit/"
