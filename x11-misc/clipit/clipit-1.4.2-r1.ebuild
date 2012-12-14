@@ -38,7 +38,6 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
 	fdo-mime_desktop_database_update
 }
 
