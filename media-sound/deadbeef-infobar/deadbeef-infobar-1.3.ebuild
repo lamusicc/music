@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: media-sound/deadbeef-infobar/deadbeef-infobar-1.3.ebuild,v 1 2012/08/31 00:59:00 megabaks Exp $
 
 EAPI=4
 
@@ -12,24 +12,45 @@ SRC_URI="https://bitbucket.org/dsimbiriatin/${PN}/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE=""
+KEYWORDS="~x86 ~amd64"
+IUSE="gtk2 gtk3"
+REQUIRED_USE="|| ( ${IUSE} )"
 
 DEPEND_COMMON="
-	x11-libs/gtk+
+	|| (
+		media-sound/deadbeef[curl]
+		media-sound/deadbeef[cover]
+		media-sound/deadbeef[lastfm]
+		)
+	gtk2? ( x11-libs/gtk+:2 media-sound/deadbeef[gtk2] )
+	gtk3? ( x11-libs/gtk+:3 media-sound/deadbeef[gtk3] )
 	dev-libs/libxml2"
 
 RDEPEND="
 	${DEPEND_COMMON}
-	media-sound/deadbeef[infobar]
 	"
 DEPEND="
 	${DEPEND_COMMON}
 	"
 
+src_compile() {
+	if use gtk2; then
+	  emake gtk2
+	fi
+
+	if use gtk3; then
+	  emake gtk3
+	fi
+}
+
 src_install() {
-	cd deadbeef-infobar/
-	insinto /usr/$(get_libdir)/deadbeef
-	doins gtk2/ddb_infobar_gtk2.so
-	doins gtk3/ddb_infobar_gtk3.so
+	if use gtk2; then
+	  insinto /usr/$(get_libdir)/deadbeef
+	  doins gtk2/ddb_infobar_gtk2.so
+	fi
+
+	if use gtk3; then
+	  insinto /usr/$(get_libdir)/deadbeef
+	  doins gtk3/ddb_infobar_gtk3.so
+	fi
 }
