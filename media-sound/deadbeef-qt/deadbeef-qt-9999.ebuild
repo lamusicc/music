@@ -12,7 +12,7 @@ EHG_REPO_URI="https://bitbucket.org/tonn/deadbeef-qt/"
 
 LICENSE="|| ( GPL-2 LGPL-2.1 )"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DEPEND="media-sound/deadbeef
