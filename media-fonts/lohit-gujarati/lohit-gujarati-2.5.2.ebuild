@@ -1,11 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/lohit-fonts/lohit-fonts-2.4.2.ebuild,v 1.7 2012/02/01 10:18:46 ssuominen Exp $
+# $Header: $
 
 inherit font
 
 FONT_S="${S}"
-FONTDIR="/usr/share/fonts/indic"
+FONTDIR="/usr/share/fonts/indic/gujarati"
 FONT_SUFFIX="ttf"
 
 DESCRIPTION="The Lohit family of Indic fonts"
