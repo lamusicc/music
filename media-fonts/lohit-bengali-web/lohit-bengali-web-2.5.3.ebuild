@@ -6,7 +6,7 @@ inherit font
 
 FONT_S="${S}"
 FONTDIR="/usr/share/fonts/indic/bengali-web"
-FONT_SUFFIX="ttf"
+FONT_SUFFIX="eot woff"
 
 DESCRIPTION="The Lohit family of Indic fonts"
 HOMEPAGE="https://fedorahosted.org/lohit"
