@@ -6,7 +6,7 @@ inherit font
 
 FONT_S="${S}"
 FONTDIR="/usr/share/fonts/indic/assamese-web"
-FONT_SUFFIX="ttf"
+FONT_SUFFIX="woff eot"
 
 DESCRIPTION="The Lohit family of Indic fonts"
 HOMEPAGE="https://fedorahosted.org/lohit"
