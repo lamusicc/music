@@ -7,7 +7,7 @@ EAPI=4
 inherit eutils pam git-2 toolchain-funcs
 
 DESCRIPTION="PAM module that enables authentication using an USB-Storage device through DSA private/public keys."
-HOMEPAGE="http://www.pamusb.org/"
+HOMEPAGE="https://github.com/aluzzardi/pam_usb"
 EGIT_REPO_URI="git://github.com/aluzzardi/pam_usb.git"
 SRC_URI=""
 LICENSE="GPL-2"
