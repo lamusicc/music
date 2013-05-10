@@ -16,6 +16,6 @@ KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 
-#RESTRICT="fetch"
+RESTRICT="fetch"
 
 RDEPEND=">=x11-libs/wxGTK-2.8.4"
