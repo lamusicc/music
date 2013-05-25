@@ -6,7 +6,7 @@ EAPI=3
 
 inherit versionator
 
-MY_PV=$(replace_version_separator 3 -) 
+MY_PV=$(replace_version_separator 3 -)
 
 DESCRIPTION="Brother scan key tool"
 HOMEPAGE="http://brother.com"
@@ -22,7 +22,9 @@ src_unpack() {
 	     unpack ${A}
 	     unpack ./data.tar.gz
 	     rm -f data.tar.gz
-} 
+		 rm -f control.tar.gz
+		 rm -f debian-binary
+}
 
 
 src_install() {
@@ -36,3 +38,4 @@ pkg_postinst() {
 pkg_prerm() {
 	    ${ROOT}/opt/brother/scanner/brscan-skey/brscan-skey-0.2.4-0.sh r
 }
+

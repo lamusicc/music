@@ -6,7 +6,7 @@ EAPI=3
 
 inherit versionator
 
-MY_PV=$(replace_version_separator 3 -) 
+MY_PV=$(replace_version_separator 3 -)
 
 DESCRIPTION="Brother scan key tool"
 HOMEPAGE="http://brother.com"
@@ -20,13 +20,13 @@ RDEPEND="${DEPEND}"
 
 src_unpack() {
 	     unpack ${A}
-	     unpack ./data.tar.gz 
+	     unpack ./data.tar.gz
 	     rm -f data.tar.gz
-} 
+}
 
 
 src_install() {
-      cp -pPR * "${D}"/ || die "installing data failed" 
+      cp -pPR * "${D}"/ || die "installing data failed"
 }
 
 pkg_postinst() {
