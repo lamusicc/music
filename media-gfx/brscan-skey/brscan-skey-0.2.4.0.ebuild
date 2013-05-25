@@ -30,9 +30,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	       ${ROOT}/usr/local/Brother/sane/brscan-skey-0.2.4-0.sh 0
+	       ${ROOT}/opt/brother/scanner/brscan-skey/brscan-skey-0.2.4-0.sh 0
 }
 
 pkg_prerm() {
-	    ${ROOT}/usr/local/Brother/sane/brscan-skey-0.2.4-0.sh r
+	    ${ROOT}/opt/brother/scanner/brscan-skey/brscan-skey-0.2.4-0.sh r
 }
