@@ -50,5 +50,4 @@ src_install() {
 		/usr/share/${PN}/${PN}20.png \
 		"AudioVideo;DiscBurning"
 
-	dohtml -r usr/share/doc/${PN}
 }
