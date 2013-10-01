@@ -26,6 +26,5 @@ RESTRICT="test binchecks"
 
 src_install() {
 	FONT_CONF=( $(find "${FONT_S}" -name *.conf -print) )
-	find "${S}" -name "*.ttf" -exec cp "{}" . \;
 	font_src_install
 }
