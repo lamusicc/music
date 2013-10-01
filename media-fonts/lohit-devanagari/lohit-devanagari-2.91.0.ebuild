@@ -6,7 +6,7 @@ inherit font
 
 FONT_S="${S}"
 FONTDIR="/usr/share/fonts/indic/devanagari"
-FONT_SUFFIX="ttf fea sfd"
+FONT_SUFFIX="fea sfd"
 
 DESCRIPTION="The Lohit family of Indic fonts"
 HOMEPAGE="https://fedorahosted.org/lohit"
@@ -26,6 +26,5 @@ RESTRICT="test binchecks"
 
 src_install() {
 	FONT_CONF=( $(find "${FONT_S}" -name *.conf -print) )
-	find "${S}" -name "*.ttf" -exec cp "{}" . \;
 	font_src_install
 }
