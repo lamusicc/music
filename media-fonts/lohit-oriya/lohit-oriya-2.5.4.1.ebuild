@@ -6,7 +6,7 @@ inherit font
 
 FONT_S="${S}"
 FONTDIR="/usr/share/fonts/indic/oriya"
-FONT_SUFFIX="ttf"
+FONT_SUFFIX="ttf fea sfd"
 
 DESCRIPTION="The Lohit family of Indic fonts"
 HOMEPAGE="https://fedorahosted.org/lohit"
