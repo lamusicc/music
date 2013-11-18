@@ -69,7 +69,9 @@ src_install() {
 
 	if use scripts; then
 		exeinto /usr/bin/
-		doexe contrib/{plowdown_add_remote_loop,loop,parallel}.sh
+		doexe contrib/plowdown_add_remote_loop.sh
+		doexe contrib/plowdown_loop.sh
+		doexe contrib/plowdown_parallel.sh
 	fi
 
 	if use bash-completion; then
