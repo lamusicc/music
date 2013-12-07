@@ -22,7 +22,7 @@ LICENSE="GPL-2
 SLOT="0"
 IUSE="adplug aac alac alsa psf ape cdda cover cover-imlib2 dts dumb converter curl ffmpeg flac gme
 	hotkeys lastfm m3u midi mms mp3 musepack nls notify nullout oss pulseaudio rpath mono2stereo
-	shellexec shn sid sndfile src static supereq threads tta vorbis vtx wavpack zip gtk3 +gtk2 wma infobar"
+	shellexec shn sid sndfile src static supereq threads tta vorbis vtx wavpack zip gtk3 +gtk2 wma"
 
 REQUIRED_USE="
 	cover? ( curl )
@@ -57,8 +57,7 @@ RDEPEND="aac? ( media-libs/faad2 )
 	wavpack? ( media-sound/wavpack )
 	zip? ( dev-libs/libzip
 	sys-libs/zlib )
-	curl? ( net-misc/curl )
-	infobar? ( net-misc/curl )"
+	curl? ( net-misc/curl )"
 
 DEPEND="
 	dev-util/intltool
@@ -148,13 +147,6 @@ src_configure() {
 
 	econf ${my_config}
 }
-
-
-
-	if use infobar; then
-		my_config="${my_config}
-		--enable-vfs-curl"
-	fi
 
 pkg_preinst() {
 	use linguas_pt_BR || rm -f "${D}/usr/share/deadbeef/help.pt_BR.txt"
