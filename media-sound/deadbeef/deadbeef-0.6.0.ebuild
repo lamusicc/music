@@ -21,7 +21,7 @@ LICENSE="GPL-2
 	shn? ( shorten )"
 SLOT="0"
 IUSE="adplug aac alac alsa psf ape cdda cover cover-imlib2 dts dumb converter curl ffmpeg flac gme
-	hotkeys lastfm m3u midi mms mp3 musepack nls notify nullout oss pulseaudio rpath mono2stereo
+	hotkeys infobar lastfm m3u midi mms mp3 musepack nls notify nullout oss pulseaudio rpath mono2stereo
 	shellexec shn sid sndfile src static supereq threads tta vorbis vtx wavpack zip gtk3 +gtk2 wma"
 
 REQUIRED_USE="
@@ -144,6 +144,12 @@ src_configure() {
 		$(use_enable wavpack)
 		$(use_enable zip vfs-zip)
 		$(use_enable wma)"
+
+		if use infobar; then
+			my_config="${my_config}
+			--enable-vfs-curl"
+		fi
+
 
 	econf ${my_config}
 }
