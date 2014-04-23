@@ -1,22 +1,22 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="4"
+EAPI="5"
 
-inherit cmake-utils mercurial
+inherit cmake-utils git-2
 
 DESCRIPTION="Qt interface plugin for Deadbeef player"
-HOMEPAGE="https://bitbucket.org/tonn/deadbeef-qt/overview"
-EHG_REPO_URI="https://bitbucket.org/tonn/deadbeef-qt/"
+HOMEPAGE="https://github.com/redpunk231/deadbeef-qt"
+EGIT_REPO_URI="git://github.com/redpunk231/deadbeef-qt.git"
 
 LICENSE="|| ( GPL-2 LGPL-2.1 )"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS=""
 IUSE=""
 
 DEPEND="media-sound/deadbeef
-		x11-libs/qt-gui:4"
+		dev-qt/qtgui:4"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}/"

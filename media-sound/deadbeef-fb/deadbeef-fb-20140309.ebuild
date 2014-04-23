@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: media-sound/deadbeef-fb/deadbeef-fb-20120827.ebuild,v 1 2012/09/08 00:20:35 megabaks Exp $
 
-EAPI=4
+EAPI=5
 
 inherit eutils
 
@@ -16,8 +16,8 @@ KEYWORDS="~x86 ~amd64"
 IUSE="gtk2 gtk3"
 
 DEPEND_COMMON="
-	gtk2? ( x11-libs/gtk+:2 media-sound/deadbeef[gtk2] )
-	gtk3? ( x11-libs/gtk+:3 media-sound/deadbeef[gtk3] )"
+	gtk2? ( media-sound/deadbeef[gtk2] )
+	gtk3? ( media-sound/deadbeef[gtk3] )"
 
 RDEPEND="${DEPEND_COMMON}"
 DEPEND="${DEPEND_COMMON}"
@@ -25,10 +25,9 @@ DEPEND="${DEPEND_COMMON}"
 S="${WORKDIR}/deadbeef-devel"
 
 src_configure() {
-	my_config="--disable-static
-	  $(use_enable gtk3)
-	  $(use_enable gtk2)"
-	econf ${my_config}
+	econf --disable-static \
+		$(use_enable gtk3) \
+		$(use_enable gtk2)
 }
 
 src_install() {
