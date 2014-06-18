@@ -14,7 +14,7 @@ LICENSE="GPL-2"
 SRC_URI="https://fedorahosted.org/releases/l/o/lohit/${P}.tar.gz"
 
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="media-gfx/fontforge"
