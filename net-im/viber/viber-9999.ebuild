@@ -20,6 +20,11 @@ RESTRICT="mirror bindist strip"
 
 S="${WORKDIR}"
 
+src_unpack() {
+	default_src_unpack
+	unpack ./data.tar.gz
+}
+
 src_prepare() {
 	epatch "${FILESDIR}/${P}-desktop.patch"
 }
