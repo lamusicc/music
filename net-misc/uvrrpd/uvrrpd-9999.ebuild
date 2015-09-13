@@ -17,6 +17,10 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
 
-src_compile() {
-	emake
+
+src_install() {
+	emake \ 
+	DESTDIR="${D}" \
+		docdir="${EPREFIX}"/usr/share/doc/${PF} \
+		install
 }
