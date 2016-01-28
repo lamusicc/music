@@ -6,7 +6,8 @@ EAPI=5
 
 inherit autotools git-r3
 
-EGIT_REPO_URI="https://forge.evolix.org/uvrrpd.git"
+#EGIT_REPO_URI="https://forge.evolix.org/uvrrpd.git"
+EGIT_REPO_URI="git://github.com/Evolix/uvrrpd"
 
 DESCRIPTION="uvrrpd is a VRRP daemon written in C, providing an full implementation of VRRPv2 (rfc3768) and VRRPv3 (rfc5798), with IPv4 and IPv6 support."
 HOMEPAGE="https://github.com/Evolix/uvrrpd"
@@ -19,4 +20,24 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
+
+src_configure()
+{
+	if [[ -x ${ECONF_SOURCE:-.}/configure ]] ; then
+		econf
+	fi
+}
+
+src_prepare()
+{
+	eautoreconf -i
+}
+
+src_install()
+{
+	emake \
+		DESTDIR="${D}" \
+	docdir="${EPREFIX}"/usr/share/doc/${PF} \
+	install
+}
 
