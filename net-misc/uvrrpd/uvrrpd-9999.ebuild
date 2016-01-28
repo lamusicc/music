@@ -21,16 +21,16 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
 
+src_prepare()
+{
+	eautoreconf -i
+}
+
 src_configure()
 {
 	if [[ -x ${ECONF_SOURCE:-.}/configure ]] ; then
 		econf
 	fi
-}
-
-src_prepare()
-{
-	eautoreconf -i
 }
 
 src_install()
