@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -9,7 +9,7 @@ DEADBEEF_GUI="yes"
 inherit deadbeef-plugins
 
 DESCRIPTION="Infobar plugin for DeadBeeF audio player. Shows lyrics and artist's biography for the current track."
-HOMEPAGE="https://bitbucket.org/dsimbiriatin/${PN}/wiki/Home"
+HOMEPAGE="https://bitbucket.org/dsimbiriatin/deadbeef-infobar"
 SRC_URI="https://bitbucket.org/dsimbiriatin/${PN}/downloads/${P}.tar.gz"
 
 RESTRICT="mirror"
