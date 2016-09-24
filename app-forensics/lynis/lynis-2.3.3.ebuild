@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,7 @@ src_prepare() {
 
 src_install() {
 	doman lynis.8
-	dodoc Changelog FAQ README
+	dodoc FAQ README
 
 	# Remove the old one during the next stabilize progress
 	exeinto /etc/cron.daily
