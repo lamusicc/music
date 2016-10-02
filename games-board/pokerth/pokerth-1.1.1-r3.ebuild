@@ -42,7 +42,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-boost-1.60.patch"
 )
 
-replace-flags -Wunused-parameter -Wno-unused-result
+replace-flags -Wall -pipe
 
 src_prepare() {
 	default
