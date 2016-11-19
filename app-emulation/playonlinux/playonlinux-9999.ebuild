@@ -11,7 +11,7 @@ MY_PN="PlayOnLinux"
 
 DESCRIPTION="Set of scripts to easily install and use Windows games and software"
 HOMEPAGE="http://playonlinux.com/"
-EGIT_REPO_URI="git://github.com/PlayOnLinux/POL-POM-4.git"
+EGIT_REPO_URI="git://github.com/PlayOnLinux/POL-POM-5.git"
 EGIT_BRANCH="master"
 
 
