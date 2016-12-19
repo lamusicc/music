@@ -39,7 +39,7 @@ RDEPEND=">=dev-python/fpconst-0.7.2
 	dev-python/guess-language
 	dev-python/halberd
 	dev-python/msgpack
-	=dev-python/nltk-2.0.4
+	>=dev-python/nltk-2.0.4
 	dev-python/phply
 	dev-python/pyopenssl
 	dev-python/pysvn
