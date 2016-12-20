@@ -52,7 +52,6 @@ RDEPEND=">=dev-python/fpconst-0.7.2
 	dev-python/soappy
 	dev-python/pyClamd
 	dev-python/git-python
-	dev-python/scapy-python3
 	dev-python/python-cluster
 	dev-python/jinja2-time
 	net-proxy/mitmproxy
