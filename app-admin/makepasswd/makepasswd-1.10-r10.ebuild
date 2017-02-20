@@ -19,8 +19,7 @@ IUSE=""
 
 RDEPEND="dev-lang/perl
 dev-perl/Crypt-PasswdMD5
-dev-perl/Crypt-OpenSSL-Random
-dev-perl/Math-Random-Secure"
+dev-perl/Crypt-OpenSSL-Random"
 
 src_unpack() {
 	unpack "${P/-/_}.orig.tar.gz" && unpack "${PN}_1.10-10.diff.gz"
