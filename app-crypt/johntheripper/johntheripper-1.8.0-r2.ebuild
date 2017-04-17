@@ -90,7 +90,8 @@ src_configure() {
 		$(use_enable pcap) \
 		$(use_enable rexgen) \
 		$(use_with commoncrypto) \
-		$(use_with openssl)
+		$(use_with openssl) \
+		$(use_with libressl)
 }
 
 src_compile() {
