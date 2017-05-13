@@ -45,6 +45,8 @@ S=${WORKDIR}/${MY_P}
 PATCHES=(
 	"${FILESDIR}/${P}-qt5.patch"
 	"${FILESDIR}/${P}-boost-1.60.patch"
+	"${FILESDIR}/${P}-qmake-gcc-6.patch"
+	"${FILESDIR}/${P}-boost-noexcept.patch"
 )
 
 src_prepare() {
