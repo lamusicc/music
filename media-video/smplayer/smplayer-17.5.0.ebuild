@@ -9,11 +9,11 @@ he_IL hr hu id it ja ka ko ku lt mk ms_MY nl nn_NO pl pt pt_BR ro_RO ru_RU
 sk sl_SI sq_AL sr sv th tr uk_UA uz vi_VN zh_CN zh_TW"
 PLOCALE_BACKUP="en_US"
 
-inherit l10n qmake-utils poly-c_ebuilds
+inherit l10n qmake-utils
 
 DESCRIPTION="Great Qt GUI front-end for mplayer/mpv"
 HOMEPAGE="http://www.smplayer.eu/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2+ BSD-2"
 SLOT="0"
