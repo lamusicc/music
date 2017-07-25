@@ -7,7 +7,7 @@ inherit cmake-utils systemd
 
 MY_PN=gsad
 
-DL_ID=2429
+DL_ID=2416
 
 DESCRIPTION="Greenbone Security Assistant for openvas"
 HOMEPAGE="http://www.openvas.org/"
@@ -30,7 +30,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.0.3-run.patch
 	)
 
-#S="${WORKDIR}"/${P}
+S="${WORKDIR}"/${P}
 
 src_prepare() {
 	sed \
