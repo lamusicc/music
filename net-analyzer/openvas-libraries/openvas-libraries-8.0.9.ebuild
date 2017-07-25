@@ -41,7 +41,7 @@ DOCS=( ChangeLog CHANGES README )
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.4-libssh.patch
 	"${FILESDIR}"/${PN}-8.0.1-include.patch
-	"${FILESDIR}"/${PN}-8.0.5-underlinking.patch
+	#"${FILESDIR}"/${PN}-8.0.5-underlinking.patch
 	)
 
 src_prepare() {
