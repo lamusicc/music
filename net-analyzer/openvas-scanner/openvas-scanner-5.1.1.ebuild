@@ -31,8 +31,8 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}"/${P/_beta/+beta}
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.0.3-mkcertclient.patch
-	"${FILESDIR}"/${PN}-4.0.3-rulesdir.patch
+	#"${FILESDIR}"/${PN}-4.0.3-mkcertclient.patch
+	#"${FILESDIR}"/${PN}-4.0.3-rulesdir.patch
 	"${FILESDIR}"/${PN}-4.0.3-run.patch
 	)
 
