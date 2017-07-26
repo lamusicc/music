@@ -10,8 +10,8 @@ index c691100..d78ffa6 100644
  set (OPENVAS_STATE_DIR   "${LOCALSTATEDIR}/lib/openvas")
  set (OPENVAS_LOG_DIR     "${LOCALSTATEDIR}/log/openvas")
  set (OPENVAS_CACHE_DIR   "${LOCALSTATEDIR}/cache/openvas")
--set (OPENVAS_RUN_DIR     "${LOCALSTATEDIR}/run")
-+set (OPENVAS_RUN_DIR     "/run")
+-set (OPENVAS_PID_DIR     "${LOCALSTATEDIR}/run")
++set (OPENVAS_PID_DIR     "/run")
  set (OPENVAS_SYSCONF_DIR "${SYSCONFDIR}/openvas")
  
  set (OPENVAS_NVT_DIR     "${OPENVAS_STATE_DIR}/plugins")
