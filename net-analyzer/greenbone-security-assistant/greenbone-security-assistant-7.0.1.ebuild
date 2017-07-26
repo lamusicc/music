@@ -15,7 +15,8 @@ SRC_URI="http://wald.intevation.org/frs/download.php/${DL_ID}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2+ BSD MIT"
-KEYWORDS=" ~amd64 ~arm ~ppc ~x86"
+#KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS=""
 IUSE=""
 
 RDEPEND="

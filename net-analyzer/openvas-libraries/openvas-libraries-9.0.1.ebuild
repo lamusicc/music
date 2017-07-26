@@ -13,7 +13,8 @@ SRC_URI="http://wald.intevation.org/frs/download.php/${DL_ID}/${P/_beta/+beta}.t
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+#KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS=""
 IUSE="ldap"
 
 RDEPEND="
@@ -42,6 +43,7 @@ PATCHES=(
 	#"${FILESDIR}"/${PN}-7.0.4-libssh.patch
 	#"${FILESDIR}"/${PN}-8.0.1-include.patch
 	#"${FILESDIR}"/${PN}-8.0.5-underlinking.patch
+	"${FILESDIR}"/${PN}-9.0.1-underlinking.patch
 	)
 
 src_prepare() {
