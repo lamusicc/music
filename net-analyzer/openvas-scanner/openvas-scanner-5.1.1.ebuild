@@ -33,7 +33,7 @@ S="${WORKDIR}"/${P/_beta/+beta}
 PATCHES=(
 	#"${FILESDIR}"/${PN}-4.0.3-mkcertclient.patch
 	#"${FILESDIR}"/${PN}-4.0.3-rulesdir.patch
-	#"${FILESDIR}"/${PN}-4.0.3-run.patch
+	"${FILESDIR}"/${PN}-5.1.1-run.patch
 	)
 
 src_prepare() {

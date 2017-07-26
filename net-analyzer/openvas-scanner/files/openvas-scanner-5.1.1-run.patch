@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt	2017-07-26 09:53:05.425565684 +0200
++++ b/CMakeLists.txt	2017-07-26 09:54:15.587525617 +0200
+@@ -160,7 +160,7 @@
+ #  set (SYSCONFDIR "${CMAKE_INSTALL_PREFIX}/etc")
+ #endif (NOT SYSCONFDIR)
+ if (NOT OPENVAS_RUN_DIR)
+-  set (OPENVAS_RUN_DIR "${LOCALSTATEDIR}/run")
++  set (OPENVAS_RUN_DIR "/run")
+ endif (NOT OPENVAS_RUN_DIR)
+ 
+ set (OPENVAS_DATA_DIR    "${DATADIR}/openvas")

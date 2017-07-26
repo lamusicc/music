@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}"/${P}
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-6.0.1-bsdsource.patch
+	"${FILESDIR}"/${PN}-7.0.2-bsdsource.patch
 	)
 
 src_prepare() {

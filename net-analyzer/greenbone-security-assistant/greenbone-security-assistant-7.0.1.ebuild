@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	#"${FILESDIR}"/${PN}-5.0.3-run.patch
+	"${FILESDIR}"/${PN}-7.0.1-run.patch
 	)
 
 S="${WORKDIR}"/${P}
