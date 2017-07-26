@@ -1,0 +1,13 @@
+--- a/CMakeLists.txt	2017-07-26 14:49:14.740873417 +0200
++++ b/CMakeLists.txt	2017-07-26 15:06:11.412292829 +0200
+@@ -178,6 +178,10 @@
+ set (OPENVASSD_DEBUGMSG "${OPENVAS_LOG_DIR}/openvassd.dump")
+ set (OPENVASSD_CONF     "${OPENVAS_SYSCONF_DIR}/openvassd.conf")
+ 
++if (NOT OPENVASSD_RULES)
++  set (OPENVASSD_RULES    "${OPENVAS_DATA_DIR}/openvassd.rules")
++endif (NOT OPENVASSD_RULES)
++
+ set (NVT_TIMEOUT "320")
+ set (SCANNER_NVT_TIMEOUT "36000")
+ 
