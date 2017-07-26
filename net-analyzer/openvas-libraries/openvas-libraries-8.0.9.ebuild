@@ -13,7 +13,8 @@ SRC_URI="http://wald.intevation.org/frs/download.php/${DL_ID}/${P/_beta/+beta}.t
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+#KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS=""
 IUSE="ldap"
 
 RDEPEND="
