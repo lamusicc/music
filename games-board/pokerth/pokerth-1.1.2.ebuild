@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils flag-o-matic qmake-utils
 
 #MY_P="PokerTH-${PV}-src"
-MY_P="PokerTH-${PV}"
+MY_P="pokerth-${PV}-rc"
 DESCRIPTION="Texas Hold'em poker game"
 HOMEPAGE="http://www.pokerth.net/"
 #SRC_URI="mirror://sourceforge/projects/${PN}/${PN}/${PV}/${MY_P}.tar.bz2"
