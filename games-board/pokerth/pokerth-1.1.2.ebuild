@@ -20,7 +20,7 @@ IUSE="dedicated"
 RDEPEND="dev-db/sqlite:3
 	dev-libs/boost:=[threads(+)]
 	dev-libs/libgcrypt:0
-	dev-libs/protobuf
+	<=dev-libs/protobuf-3.4.1
 	dev-libs/tinyxml[stl]
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5
