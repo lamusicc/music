@@ -160,11 +160,6 @@ src_prepare() {
 			-i "${S}/plugins/wildmidi/wildmidiplug.c" || die
 	fi
 
-	if ! use unity ; then
-		# remove unity trash
-		eapply "${FILESDIR}/${P}-remove-unity-trash.patch"
-	fi
-
 	eapply_user
 
 	config_rpath_update "${S}/config.rpath"
