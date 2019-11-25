@@ -138,14 +138,8 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${P}"
 
 src_prepare() {
-	if [[ "$(l10n_get_locales disabled)" =~ "ru" ]] ; then
-		eapply "${FILESDIR}/${P}-remove-ru-help-translation.patch"
-		rm -v "${S}/translation/help.ru.txt" || die
-	fi
 
 		eapply "${FILESDIR}/70339732d8530570861d8fe26112b9f203077e91.patch"
-
-
 			# clear out `docs_DATA`
 			rsed -e '/^EXTRA_DIST/i docs_DATA =' -i -- Makefile.am
 
