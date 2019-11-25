@@ -1,17 +1,16 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI="7"
 
 PLOCALES="be bg bn ca cs da de el en_GB es et eu fa fi fr gl he hr hu id it ja kk km lg
-	lt nl pl pt pt_BR ro ru si_LK sk sl sr sr@latin sv te tr ug uk vi zh_CN zh_TW"
+	lt lv nl pl pt pt_BR ro ru si_LK sk sl sr sr@latin sv te tr ug uk vi zh_CN zh_TW"
 
 PLOCALE_BACKUP="en_GB"
 
-inherit autotools eutils fdo-mime gnome2-utils l10n versionator
+inherit autotools gnome2-utils l10n xdg-utils
 
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://github.com/DeaDBeeF-Player/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
 
@@ -52,6 +51,7 @@ LICENSE="BSD
 	mpg123? ( LGPL-2.1 ZLIB )
 	musepack? ( BSD ZLIB )
 	nullout? ( ZLIB )
+	opus? ( ZLIB )
 	oss? ( GPL-2 )
 	playlist-browser? ( ZLIB )
 	psf? ( BSD GPL-1 MAME ZLIB )
@@ -72,7 +72,7 @@ SLOT="0"
 IUSE="+alsa +flac +gtk2 +hotkeys +m3u +mad +mp3 +sndfile +vorbis
 	aac adplug alac cdda cdparanoia converter cover cover-imlib2 cover-network curl dts dumb equalizer
 	ffmpeg gme gtk3 lastfm libav libnotify libsamplerate mac midi mms mono2stereo mpg123 musepack nls
-	nullout oss playlist-browser psf pulseaudio sc68 shell-exec shn sid tta unity vtx wavpack wma zip"
+	nullout opus oss playlist-browser psf pulseaudio replaygain-scanner sc68 shell-exec shn sid tta unity vtx wavpack wma zip"
 
 REQUIRED_USE="cdparanoia? ( cdda )
 	converter? ( || ( gtk2 gtk3 ) )
@@ -81,6 +81,7 @@ REQUIRED_USE="cdparanoia? ( cdda )
 	cover? ( || ( gtk2 gtk3 ) )
 	ffmpeg? ( !libav )
 	lastfm? ( curl )
+	libav? ( !ffmpeg )
 	mp3? ( || ( mad mpg123 ) )
 	playlist-browser? ( || ( gtk2 gtk3 ) )
 	shell-exec? ( || ( gtk2 gtk3 ) )
@@ -118,6 +119,7 @@ RDEPEND="dev-libs/glib:2
 	mad? ( media-libs/libmad:0 )
 	midi? ( media-sound/timidity-freepats:0 )
 	mpg123? ( media-sound/mpg123:0 )
+	opus? ( media-libs/opusfile:0 )
 	psf? ( sys-libs/zlib:0 )
 	pulseaudio? ( media-sound/pulseaudio:0 )
 	sndfile? ( media-libs/libsndfile:0 )
@@ -136,20 +138,17 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${P}"
 
 src_prepare() {
-	if ! use_if_iuse linguas_pt_BR && use_if_iuse linguas_ru ; then
-		epatch "${FILESDIR}/${PN}-remove-pt_br-help-translation.patch"
-		rm -v "${S}/translation/help.pt_BR.txt" || die
-	fi
-
-	if ! use_if_iuse linguas_ru && use_if_iuse linguas_pt_BR ; then
-		epatch "${FILESDIR}/${PN}-remove-ru-help-translation.patch"
+	if [[ "$(l10n_get_locales disabled)" =~ "ru" ]] ; then
+		eapply "${FILESDIR}/${P}-remove-ru-help-translation.patch"
 		rm -v "${S}/translation/help.ru.txt" || die
 	fi
 
-	if ! use_if_iuse linguas_pt_BR && ! use_if_iuse linguas_ru ; then
-		epatch "${FILESDIR}/${PN}-remove-pt_br-and-ru-help-translation.patch"
-		rm -v "${S}/translation/help.pt_BR.txt" "${S}/translation/help.ru.txt" || die
-	fi
+	remove_locale() {
+		sed -e "/${1}/d" \
+			-i "${S}/po/LINGUAS" || die
+	}
+
+	l10n_for_each_disabled_locale_do remove_locale
 
 	if use midi ; then
 		# set default gentoo path
@@ -159,18 +158,26 @@ src_prepare() {
 
 	if ! use unity ; then
 		# remove unity trash
-		epatch "${FILESDIR}/${PN}-0.7.0-remove-unity-trash.patch"
+		eapply "${FILESDIR}/${P}-remove-unity-trash.patch"
 	fi
+
+	eapply_user
 
 	config_rpath_update "${S}/config.rpath"
 	eautoreconf
 }
 
 src_configure() {
+	if use ffmpeg && ! use libav ; then
+		ffmpeg_configure="$(use_enable ffmpeg)"
+	elif use libav && ! use ffmpeg ; then
+		ffmpeg_configure="$(use_enable libav ffmpeg)"
+	fi
+
 	econf --disable-coreaudio \
 		--disable-portable \
 		--disable-static \
-		--docdir=/usr/share/${PN} \
+		"${ffmpeg_configure}" \
 		$(use_enable aac) \
 		$(use_enable adplug) \
 		$(use_enable alac) \
@@ -185,14 +192,12 @@ src_configure() {
 		$(use_enable dts dca) \
 		$(use_enable dumb) \
 		$(use_enable equalizer supereq) \
-		$(use_enable ffmpeg) \
 		$(use_enable flac) \
 		$(use_enable gme) \
 		$(use_enable gtk2) \
 		$(use_enable gtk3) \
 		$(use_enable hotkeys) \
 		$(use_enable lastfm lfm) \
-		$(use_enable libav ffmpeg) \
 		$(use_enable libnotify notify) \
 		$(use_enable libsamplerate src) \
 		$(use_enable m3u) \
@@ -205,10 +210,12 @@ src_configure() {
 		$(use_enable musepack) \
 		$(use_enable nls) \
 		$(use_enable nullout) \
+		$(use_enable opus) \
 		$(use_enable oss) \
 		$(use_enable playlist-browser pltbrowser) \
 		$(use_enable psf) \
 		$(use_enable pulseaudio pulse) \
+		$(use_enable replaygain-scanner rgscanner) \
 		$(use_enable sc68) \
 		$(use_enable shell-exec shellexecui) \
 		$(use_enable shn) \
@@ -229,19 +236,19 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 
 	if use gtk2 || use gtk3 ; then
-		gnome2_icon_cache_update
+		xdg_icon_cache_update
 	fi
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 
 	if use gtk2 || use gtk3 ; then
-		gnome2_icon_cache_update
+		xdg_icon_cache_update
 	fi
 }
