@@ -17,10 +17,11 @@ REQUIRED_USE="|| ( ${IUSE} )"
 
 DEPEND_COMMON="
 	|| (
-		>=media-sound/deadbeef-0.6[curl]
+		media-sound/deadbeef[curl]
 		)
-	gtk2? ( >=media-sound/deadbeef-0.6[gtk] )
-	gtk3? ( >=media-sound/deadbeef-0.6[gtk3] )
+	gtk2? ( media-sound/deadbeef[gtk] )
+	gtk3? ( media-sound/deadbeef[gtk3] )
+	x11-libs/gdk-pixbuf[jpeg]
 	dev-libs/libxml2"
 
 RDEPEND="${DEPEND_COMMON}"
