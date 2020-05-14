@@ -21,7 +21,8 @@ DEPEND_COMMON="
 RDEPEND="${DEPEND_COMMON}"
 DEPEND="${DEPEND_COMMON}"
 
-S="${WORKDIR}/deadbeef-devel"
+#S="${WORKDIR}/deadbeef-devel"
+S="${WORKDIR}/deadbeef-fb-9999"
 
 src_configure() {
 	./autogen.sh
