@@ -16,7 +16,7 @@ IUSE="gtk2 gtk3"
 
 DEPEND_COMMON="
 	dev-db/sqlite:3
-	gtk2? ( media-sound/deadbeef[gtk2] )
+	gtk2? ( media-sound/deadbeef[gtk] )
 	gtk3? ( media-sound/deadbeef[gtk3] )"
 
 RDEPEND="${DEPEND_COMMON}"
