@@ -16,9 +16,7 @@ IUSE="gtk2 gtk3"
 REQUIRED_USE="|| ( ${IUSE} )"
 
 DEPEND_COMMON="
-	|| (
-		media-sound/deadbeef[curl]
-		)
+	media-sound/deadbeef[curl]
 	gtk2? ( media-sound/deadbeef[gtk] )
 	gtk3? ( media-sound/deadbeef[gtk3] )
 	x11-libs/gdk-pixbuf[jpeg]
@@ -49,3 +47,4 @@ src_install() {
 	  doins gtk3/ddb_infobar_gtk3.so
 	fi
 }
+
