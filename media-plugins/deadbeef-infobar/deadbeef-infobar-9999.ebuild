@@ -16,7 +16,6 @@ IUSE="gtk2 gtk3"
 REQUIRED_USE="|| ( ${IUSE} )"
 
 DEPEND_COMMON="
-	media-sound/deadbeef[curl]
 	gtk2? ( media-sound/deadbeef[gtk] )
 	gtk3? ( media-sound/deadbeef[gtk3] )
 	x11-libs/gdk-pixbuf[jpeg]
