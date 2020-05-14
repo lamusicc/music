@@ -19,7 +19,7 @@ DEPEND_COMMON="
 	|| (
 		>=media-sound/deadbeef-0.6[curl]
 		)
-	gtk2? ( >=media-sound/deadbeef-0.6[gtk2] )
+	gtk2? ( >=media-sound/deadbeef-0.6[gtk] )
 	gtk3? ( >=media-sound/deadbeef-0.6[gtk3] )
 	dev-libs/libxml2"
 
