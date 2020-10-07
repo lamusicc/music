@@ -16,8 +16,7 @@ IUSE="gtk2 gtk3"
 
 DEPEND_COMMON="
 	sci-libs/fftw:3.0
-	gtk2? ( media-sound/deadbeef[gtk] )
-	gtk3? ( media-sound/deadbeef[gtk3] )"
+	media-sound/deadbeef"
 
 RDEPEND="${DEPEND_COMMON}"
 DEPEND="${DEPEND_COMMON}"
