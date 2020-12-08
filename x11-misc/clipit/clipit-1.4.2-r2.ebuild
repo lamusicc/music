@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
+EAPI=5
 
-inherit fdo-mime autotools eutils
+inherit fdo-mime autotools eutils gnome2-utils
 
 DESCRIPTION="ClipIt is a lightweight, fully featured GTK+ clipboard manager."
 HOMEPAGE="http://sourceforge.net/projects/gtkclipit/"
@@ -33,11 +33,16 @@ src_install() {
 	dodoc AUTHORS NEWS README ABOUT-NLS
 }
 
+pkg_preinst() {
+	gnome2_icon_savelist
+}
+
 pkg_postinst() {
 	fdo-mime_desktop_database_update
 }
 
 pkg_postrm() {
+	gnome2_icon_cache_update
 	fdo-mime_desktop_database_update
 }
 
