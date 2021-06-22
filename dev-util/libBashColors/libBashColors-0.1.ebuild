@@ -1,8 +1,8 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=3
+EAPI=7
 
 DESCRIPTION="Lib for colorise shell script."
 HOMEPAGE="https://github.com/lamusicc"

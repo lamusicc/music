@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="3"
+EAPI=7
 
 inherit eutils
 
-DESCRIPTION="Ansi Color is a simple bash shell script that makes it easy to color and format echo'd text."
+DESCRIPTION="Ansi Color is a simple bash shell script that makes it easy to color and format echo text."
 HOMEPAGE="http://code.google.com/p/ansi-color/"
 SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ansi-color/ansi-color-0.6.tar.gz"
 
