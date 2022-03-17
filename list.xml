@@ -2,7 +2,7 @@
 <layman>
     <overlay
         type = "git"
-        src  = "git://github.com/lamusicc/music.git"
+        src  = "https://github.com/lamusicc/music.git"
         contact = "lamusicc@gmail.com"
         status  = "official"
         name = "music">
